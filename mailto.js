@@ -1,6 +1,4 @@
 /**
- * Mailto.js
- *
  * Template Drive Mailto Functionality for Use in a Generic HTML Form
  *
  * Example Usage:
@@ -56,18 +54,6 @@
      return _fields;
    };
 
-   this.from = function(_data) {
-
-     if (_data.human_email) {
-       return _data.human_email.value;
-     }
-
-     console.log("Messages could not find a `from` email address.");
-
-     return "";
-
-   };
-
    this.body = function(_data) {
      var self = this,
          fields = self.parseFields(),
@@ -86,10 +72,9 @@
 
    this.submit = function(message) {
      var self = this,
-         _body = self.body(message),
-         _from = self.from(message);
+         _body = self.body(message);
 
-     self.send("mailto:" + self.to + "?from=_from&subject=" + self.subject + "&body=" + _body);
+     self.send("mailto:" + self.to + "?subject=" + self.subject + "&body=" + _body);
    };
 
 };
